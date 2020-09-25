@@ -13,9 +13,11 @@ class ClientMoralController extends AbstractController
      */
     public function index()
     {
-        return $this->render('client_moral/add.html.twig');
+        $em = $this->getDoctrine()->getManager(); 
+        $data['clientmorals'] = $em->getRepository(ClientMoral::class)->findAll();
+        return $this->render('client_moral/add.html.twig', $data);
     }
-
+    
     /**
      * @Route("/clientmoral/add", name="client_moral")
      */

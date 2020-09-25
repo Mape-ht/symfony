@@ -1,7 +1,36 @@
 {% extends 'accueil.html.twig' %}
 
-{% block title %}ClientMoralController!{% endblock %}
+{% block title %}Création Client Moral{% endblock %}
 
 {% block body %}
-client moral
+<div class="container row">
+  <div class="card col-md-6">
+    <div class="card-header">Liste des Clients Entreprises</div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <tr>
+            <th>Identifiant</th>
+            <th>Raison Social</th>
+            <th>Adresse</th>
+            <th>Telephone</th>
+          </tr>
+          {% for c in clientmorals %}
+            <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.Raison }}</td>
+            <td>{{ c.Adresse }}</td>
+            <td>{{ c.Telephone }}</td>
+            </tr>
+          {% endfor %}  
+        </table>
+      </div>
+    </div>
+    <div class="card col-md-6">
+      <div class="card-header">Creation nouveau Client Entreprise</div>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>  
+</div>
+
 {% endblock %}
