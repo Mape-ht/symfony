@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ClientMoral;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,6 +13,22 @@ class ClientMoralController extends AbstractController
      */
     public function index()
     {
+        return $this->render('client_moral/add.html.twig');
+    }
+
+    /**
+     * @Route("/clientmoral/add", name="client_moral")
+     */
+    public function add()
+    {
+        $clientmoral = new ClientMoral();
+        $clientmoral->setRaisonsocial("Air France");
+        $clientmoral->setAdresse("Dakar");
+        $clientmoral->setTelephone("777777777"); 
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($clientmoral);
+        $em->flush();
         return $this->render('client_moral/add.html.twig');
     }
 }
