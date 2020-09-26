@@ -3,5 +3,32 @@
 {% block title %}Creation Compte{% endblock %}
 
 {% block body %}
-compte
+<form action="{{path('compte')}}" method="post">
+  <div class="form-group">
+    <label for="inputNumero">Numero</label>
+    <input type="text" name="numero" class="form-control" id="inputNumero" placeholder="Numero">
+  </div>
+  <div class="form-group">
+    <label for="inputClerib">Cle Rib</label>
+    <input type="text" name="clerib" class="form-control" id="inputClerib" placeholder="Clerib">
+  </div>
+  <div class="form-group">
+    <label for="inputSolde">Solde</label>
+    <input type="decimal" name="solde" class="form-control" id="inputSolde" placeholder="Solde">
+  </div>
+  <div class="form-group">
+    <label for="inputTypefrais">Type Frais</label>
+    <input type="text" name="typefrais" class="form-control" id="inputTypefrais" placeholder="Typefrais">
+  </div>
+  <div class="form-group">
+    <label for="inputTypecompte">Type Compte</label>
+    <input type="text" name="typecompte" class="form-control" id="inputTypecompte" placeholder="Typecompte">
+  </div>
+  <div class="form-group">
+    <label for="inputDateouverture">Date Ouverture</label>
+    <input type="date" name="dateouverture" class="form-control" id="inputDateouverture" placeholder="Dateouverture">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Creer</button>
+</form>
 {% endblock %}
