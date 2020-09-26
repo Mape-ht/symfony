@@ -3,12 +3,33 @@
 {% block title %}Création Client Physique{% endblock %}
 
 {% block body %}
+<form action="{{path('client_physique')}}" method="post">
+  <div class="form-group">
+    <label for="inputNom">Nom</label>
+    <input type="text" name="nom" class="form-control" id="inputNom" placeholder="Nom">
+  </div>
+  <div class="form-group">
+    <label for="inputPrenom">Prenom</label>
+    <input type="text" name="prenom" class="form-control" id="inputPrenom" placeholder="Prenom">
+  </div>
+  <div class="form-group">
+    <label for="inputAdresse">Adresse</label>
+    <input type="text" name="adresse" class="form-control" id="inputAdresse" placeholder="Adresse">
+  </div>
+  <div class="form-group">
+    <label for="inputTelephone">Telephone</label>
+    <input type="text" name="telephone" class="form-control" id="inputTelephone" placeholder="Telephone">
+  </div>
+  <div class="form-group">
+    <label for="inputStatut">Statut</label>
+    <input type="text" name="statut" class="form-control" id="inputStatut" placeholder="Statut">
+  </div>
+  <div class="form-group">
+    <label for="inputSalaire">Salaire</label>
+    <input type="text" name="salaire" class="form-control" id="inputSalaire" placeholder="Salaire">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Creer</button>
+</form>
 
-<h3>Ajout Client Physique </h3>
-<div>
-
-{{form(form)}}
-
-</div>
 {% endblock %}
-
