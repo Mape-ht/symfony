@@ -1,0 +1,25 @@
+{% extends 'accueil.html.twig' %}
+
+{% block title %}Liste Client Moral{% endblock %}
+
+{% block body %}
+<div class="container row">
+  <div class="card col-md-6">
+    <div class="card-header">Liste des Clients Entreprises</div>
+      <div class="card-body">
+        
+        <table class="table table-striped">
+          
+          {% for clientmoral in clientmorals %}
+            <tr>
+            <td>{{ clientmoral.id|e }}</td>
+            <td>{{ clientmoral.raisonsocial|e }}</td>
+            <td>{{ clientmoral.adresse|e }}</td>
+            <td>{{ clientmoral.telephone|e }}</td>
+            </tr>
+          {% endfor %}  
+        </table>
+      </div>
+    </div>
+</div>
+{% endblock %}

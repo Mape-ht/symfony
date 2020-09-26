@@ -3,34 +3,21 @@
 {% block title %}Création Client Moral{% endblock %}
 
 {% block body %}
-<div class="container row">
-  <div class="card col-md-6">
-    <div class="card-header">Liste des Clients Entreprises</div>
-      <div class="card-body">
-        <table class="table table-striped">
-          <tr>
-            <th>Identifiant</th>
-            <th>Raison Social</th>
-            <th>Adresse</th>
-            <th>Telephone</th>
-          </tr>
-          {% for c in clientmorals %}
-            <tr>
-            <td>{{ c.id }}</td>
-            <td>{{ c.Raison }}</td>
-            <td>{{ c.Adresse }}</td>
-            <td>{{ c.Telephone }}</td>
-            </tr>
-          {% endfor %}  
-        </table>
-      </div>
-    </div>
-    <div class="card col-md-6">
-      <div class="card-header">Creation nouveau Client Entreprise</div>
-        <div class="card-body">
-        </div>
-      </div>
-    </div>  
-</div>
+<form action="{{path('client_moral')}}" method="post">
+  <div class="form-group">
+    <label for="inputRaisonsocial">Raison Sociale</label>
+    <input type="text" name="raison_social" class="form-control" id="inputRaisonsocial" placeholder="Raison sociale">
+  </div>
+  <div class="form-group">
+    <label for="inputAdresse">Adresse</label>
+    <input type="text" name="adresse" class="form-control" id="inputAdresse" placeholder="Adresse">
+  </div>
+  <div class="form-group">
+    <label for="inputTelephone">Telephone</label>
+    <input type="text" name="telephone" class="form-control" id="inputTelephone" placeholder="Telephone">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Creer</button>
+</form>
 
 {% endblock %}
