@@ -43,7 +43,7 @@ class Compte
     private $typeCompte;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateOuverture;
 

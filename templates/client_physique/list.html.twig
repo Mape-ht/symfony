@@ -1,0 +1,28 @@
+{% extends 'accueil.html.twig' %}
+
+{% block title %}Liste Client Physique{% endblock %}
+
+{% block body %}
+<div class="container row">
+  <div class="card col-md-6">
+    <div class="card-header">Liste des Clients Particuliers</div>
+      <div class="card-body">
+        
+        <table class="table table-striped">
+          
+          {% for clientphysique in clientphysiques %}
+            <tr>
+            <td>{{ clientphysique.id|e }}</td>
+            <td>{{ clientphysique.nom|e }}</td>
+            <td>{{ clientphysique.prenom|e }}</td>
+            <td>{{ clientphysique.adresse|e }}</td>
+            <td>{{ clientphysique.telephone|e }}</td>
+            <td>{{ clientphysique.statut|e }}</td>
+            <td>{{ clientphysique.salaire|e }}</td>
+            </tr>
+          {% endfor %}  
+        </table>
+      </div>
+    </div>
+</div>
+{% endblock %}

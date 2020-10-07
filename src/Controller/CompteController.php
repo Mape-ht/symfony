@@ -36,7 +36,7 @@ class CompteController extends AbstractController
             $cpte->setSolde($solde);
             $cpte->setTypeFrais($typefrais);
             $cpte->setTypeCompte($typecompte);
-            $cpte->setDateOuverture($dateouverture);
+            $cpte->setDateOuverture(new \DateTime());
 
             $em->persist($cpte);
             $em->flush();
