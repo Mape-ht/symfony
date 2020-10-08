@@ -18,7 +18,7 @@
             <td>{{ compte.solde|e }}</td>
             <td>{{ compte.typefrais|e }}</td>
             <td>{{ compte.typecompte|e }}</td>
-            <td>{{ compte.dateouverture|e }}</td>
+            <td>{{ compte.dateouverture|date(timezone="Africa/Dakar") }}</td>
             </tr>
           {% endfor %}  
         </table>
