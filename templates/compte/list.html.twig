@@ -1,0 +1,28 @@
+{% extends 'accueil.html.twig' %}
+
+{% block title %}Liste Comptes{% endblock %}
+
+{% block body %}
+<div class="container row">
+  <div class="card col-md-6">
+    <div class="card-header">Liste des Comptes</div>
+      <div class="card-body">
+        
+        <table class="table table-striped">
+          
+          {% for compte in comptes %}
+            <tr>
+            <td>{{ compte.id|e }}</td>
+            <td>{{ compte.numero|e }}</td>
+            <td>{{ compte.clerib|e }}</td>
+            <td>{{ compte.solde|e }}</td>
+            <td>{{ compte.typefrais|e }}</td>
+            <td>{{ compte.typecompte|e }}</td>
+            <td>{{ compte.dateouverture|e }}</td>
+            </tr>
+          {% endfor %}  
+        </table>
+      </div>
+    </div>
+</div>
+{% endblock %}

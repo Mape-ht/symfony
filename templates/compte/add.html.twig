@@ -13,6 +13,24 @@
     <input type="text" name="clerib" class="form-control" id="inputClerib" placeholder="Clerib">
   </div>
   <div class="form-group">
+    <label for="selectclientM">Client Entreprise</label>
+    <select class="form-control" name="clientM" id="selectclientM">
+      <option value="non selection">Client Entreprise</option>
+      {% for clientmoral in clientmorals %}
+      <option value="{{ clientmoral.id|e }}">{{ clientmoral.raisonsocial|e }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="selectclientP">Client Particulier</label>
+    <select class="form-control" name="clientP" id="selectclientP">
+      <option value="non selection">Client Particulier</option>
+      {% for clientphysique in clientphysiques %}
+      <option value="{{ clientphysique.id|e }}">{{ clientphysique.nom|e }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
     <label for="inputSolde">Solde</label>
     <input type="decimal" name="solde" class="form-control" id="inputSolde" placeholder="Solde">
   </div>

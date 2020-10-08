@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\ClientMoral;
+use App\Entity\ClientPhysique;
 use App\Entity\Compte;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CompteController extends AbstractController
@@ -14,15 +17,33 @@ class CompteController extends AbstractController
      */
     public function afficheForm()
     {
-        return $this->render('compte/add.html.twig');
+        
+        $em = $this->getDoctrine()->getManager(); 
+        
+        
+        $data['clientmorals'] = $em->getRepository(ClientMoral::class)->findAll();
+        $data['clientphysiques'] = $em->getRepository(ClientPhysique::class)->findAll();
+        return $this->render('compte/add.html.twig', $data);
     }
     
-    
+    /**
+     * @Route("/compte/list", name="list_compte")
+     */
+    public function listCompte()
+    {
+        $em = $this->getDoctrine()->getManager(); 
+        
+        
+        $data['comptes'] = $em->getRepository(Compte::class)->findAll();
+
+        return $this->render('compte/list.html.twig', $data);
+    }
+        
     
     /**
      * @Route("/compte/add", name="compte")
      */
-    public function add()
+    public function add(Request $request)
     {
 
         if(isset($_POST))
@@ -30,6 +51,11 @@ class CompteController extends AbstractController
 
             extract($_POST);
             $em =$this->getDoctrine()->getManager();
+            $clientEntreprise = $em->getRepository(ClientMoral::class)->find($clientM);
+            $clientParticulier = $em->getRepository(ClientPhysique::class)->find($clientP);
+            //var_dump($clientEntreprise,$clientParticulier);
+            //die;
+
             $cpte = new Compte();
             $cpte->setNumero($numero);
             $cpte->setClerib($clerib);
@@ -37,6 +63,8 @@ class CompteController extends AbstractController
             $cpte->setTypeFrais($typefrais);
             $cpte->setTypeCompte($typecompte);
             $cpte->setDateOuverture(new \DateTime());
+            $cpte->setClientMoral($clientEntreprise);
+            $cpte->setClientPhysique($clientParticulier);
 
             $em->persist($cpte);
             $em->flush();
